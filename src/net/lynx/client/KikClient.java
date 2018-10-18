@@ -18,12 +18,14 @@ import static net.lynx.client.Constants.kikHost;
 import static net.lynx.client.Constants.kikPort;
 
 public class KikClient {
+    private OnDataReceivedListener onDataReceived;
     private SSLSocketFactory sslsocketfactory = (SSLSocketFactory) SSLSocketFactory.getDefault();
     private SSLSocket sslsocket = (SSLSocket) sslsocketfactory.createSocket(kikHost, kikPort);
     private BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(sslsocket.getOutputStream()));
     private InputStream is = sslsocket.getInputStream();
 
     public KikClient() throws IOException {
+        setOnDataReceived(KikDataHandler::handleData);
         sslsocket.startHandshake();
         connect_to_kik_server();
     }
@@ -37,11 +39,23 @@ public class KikClient {
         Log("Connecting to kik server...");
         try {
             write_to_kik_server(initial_connection_payload);
-            String response = read_from_kik_server();
+            String response = read_from_kik_server_once();
             if (!response.equals("<k ok=\"1\">")) {
                 throw new KikErrorException("Could not connect to kik server: " + response);
             }
             Log("Connected to kik server");
+            new Thread(() -> {
+                byte[] buffer = new byte[32768];
+                String data;
+                try {
+                    for (int b; ((b = is.read(buffer)) > 0); ) {
+                        data = new String(buffer, 0, b, StandardCharsets.UTF_8);
+                        onDataReceived.onDataReceived(data);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }).start();
         } catch (IOException e) {
             Log("Failed connecting to kik server...");
             e.printStackTrace();
@@ -72,9 +86,6 @@ public class KikClient {
         query.addTextNode("model", "Samsung Galaxy S5 - 4.4.4 - API 19 - 1080x1920");
         iq.addChild(query);
         write_to_kik_server(iq.toString());
-        getResponse();
-        //^ Blocks the thread and can no longer use code after this
-        //TODO: Fix it
     }
 
     private void register_to_kik(String username, String password, String email) throws IOException {
@@ -141,16 +152,7 @@ public class KikClient {
         writer.flush();
     }
 
-    public void getResponse() throws IOException {
-        byte[] buffer = new byte[32768];
-        String a;
-        for (int b; ((b = is.read(buffer)) > 0); ) {
-            a = new String(buffer, 0, b, StandardCharsets.UTF_8);
-            Log(a);
-        }
-    }
-
-    private String read_from_kik_server() throws IOException, KikEmptyResponseException {
+    private String read_from_kik_server_once() throws IOException, KikEmptyResponseException {
         byte[] buffer = new byte[32768];
         String data;
         data = new String(buffer, 0, is.read(buffer), StandardCharsets.UTF_8);
@@ -158,6 +160,19 @@ public class KikClient {
             throw new KikEmptyResponseException("Kik server returned empty response");
         }
         return data;
+    }
+
+    public OnDataReceivedListener getOnDataReceived() {
+        return onDataReceived;
+    }
+
+    /**
+    * This sets how the data is handled after receiving it
+    * from kik servers only Override onDataReceived
+    * if you know what you are doing!
+     */
+    public void setOnDataReceived(OnDataReceivedListener onDataReceived) {
+        this.onDataReceived = onDataReceived;
     }
 }
 
