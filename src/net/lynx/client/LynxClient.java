@@ -12,7 +12,7 @@ public class LynxClient {
             kikClient.setOnDataReceived(data -> {
                 System.out.println(data);
             });
-        } catch (IOException | KikEmptyResponseException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

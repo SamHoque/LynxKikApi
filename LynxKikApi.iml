@@ -10,25 +10,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../xmlpull_1_0_5.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/../bcpkix-jdk15on-160.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/../bcprov-jdk15on-160.jar!/" />
+          <root url="jar://$MODULE_DIR$/../kxml2-2.3.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

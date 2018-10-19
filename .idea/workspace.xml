@@ -2,13 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a6ecc4d9-761b-418e-b438-421a238fdafd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/net/lynx/client/KikDataHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/net/lynx/client/OnDataReceivedListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/net/lynx/client/objects/KikUUIDGen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/net/lynx/client/objects/XMPPHolder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/net/lynx/client/utils/Base64.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/net/lynx/client/utils/KikTimestampUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/net/lynx/client/utils/MapUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LynxKikApi.iml" beforeDir="false" afterPath="$PROJECT_DIR$/LynxKikApi.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LynxKikApi/net/lynx/client/Constants.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LynxKikApi/net/lynx/client/Constants.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/LynxKikApi/net/lynx/client/KikClient.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/LynxKikApi/net/lynx/client/LynxClient.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LynxKikApi/net/lynx/client/LynxClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LynxKikApi/net/lynx/client/LynxClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LynxKikApi/net/lynx/client/objects/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LynxKikApi/net/lynx/client/objects/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LynxKikApi/net/lynx/client/utils/CryptoUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LynxKikApi/net/lynx/client/utils/CryptoUtils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/net/lynx/client/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/net/lynx/client/Constants.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/net/lynx/client/KikClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/net/lynx/client/KikClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/net/lynx/client/LynxClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/net/lynx/client/LynxClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/net/lynx/client/objects/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/net/lynx/client/objects/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/net/lynx/client/utils/CryptoUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/net/lynx/client/utils/CryptoUtils.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,33 +42,35 @@
           <entry key="project.open.time.54" value="2" />
           <entry key="project.open.time.57" value="1" />
           <entry key="project.open.time.60" value="2" />
-          <entry key="project.opened" value="13" />
+          <entry key="project.open.time.66" value="1" />
+          <entry key="project.opened" value="14" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="class" value="6" />
           <entry key="iml" value="2" />
-          <entry key="java" value="37" />
+          <entry key="java" value="60" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="6" />
           <entry key="IDEA_MODULE" value="2" />
-          <entry key="JAVA" value="37" />
+          <entry key="JAVA" value="60" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="76" />
-          <entry key="java" value="4669" />
+          <entry key="java" value="6935" />
+          <entry key="txt" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="4669" />
-          <entry key="PLAIN_TEXT" value="76" />
+          <entry key="JAVA" value="6935" />
+          <entry key="PLAIN_TEXT" value="84" />
         </counts>
       </usages-collector>
     </session>
@@ -71,33 +83,34 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/net/lynx/client/KikClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="160" column="9" lean-forward="true" selection-start-line="160" selection-start-column="9" selection-end-line="160" selection-end-column="9" />
+            <state relative-caret-position="126">
+              <caret line="190" column="17" selection-start-line="190" selection-start-column="17" selection-end-line="190" selection-end-column="17" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#7212#7213#0" expanded="true" />
-                <element signature="e#7249#7250#0" expanded="true" />
-                <element signature="e#7335#7336#0" expanded="true" />
-                <element signature="e#7387#7388#0" expanded="true" />
+                <element signature="e#8074#8075#0" expanded="true" />
+                <element signature="e#8126#8127#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/net/lynx/client/KikDataHandler.java">
+        <entry file="file://$PROJECT_DIR$/src/net/lynx/client/LynxClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+            <state relative-caret-position="89">
+              <caret line="9" column="14" lean-forward="true" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="15" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/net/lynx/client/OnDataReceivedListener.java">
+        <entry file="file://$PROJECT_DIR$/src/net/lynx/client/Constants.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+            <state relative-caret-position="153">
+              <caret line="9" column="76" selection-start-line="9" selection-start-column="76" selection-end-line="9" selection-end-column="76" />
             </state>
           </provider>
         </entry>
@@ -105,10 +118,61 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/net/lynx/client/utils/CryptoUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="20" column="72" selection-start-line="20" selection-start-column="72" selection-end-line="20" selection-end-column="72" />
+            <state relative-caret-position="613">
+              <caret line="78" column="11" selection-start-line="78" selection-start-column="11" selection-end-line="78" selection-end-column="11" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#4602#4603#0" expanded="true" />
+                <element signature="e#4630#4631#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/lynx/client/objects/XMPPHolder.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="375">
+              <caret line="26" column="57" selection-start-line="26" selection-start-column="57" selection-end-line="26" selection-end-column="57" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/lynx/client/objects/User.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="157">
+              <caret line="50" column="20" lean-forward="true" selection-start-line="50" selection-start-column="20" selection-end-line="50" selection-end-column="20" />
+              <folding>
+                <element signature="e#317#318#0" expanded="true" />
+                <element signature="e#362#363#0" expanded="true" />
+                <element signature="e#548#549#0" expanded="true" />
+                <element signature="e#590#591#0" expanded="true" />
+                <element signature="e#622#623#0" expanded="true" />
+                <element signature="e#650#651#0" expanded="true" />
+                <element signature="e#690#691#0" expanded="true" />
+                <element signature="e#734#735#0" expanded="true" />
+                <element signature="e#766#767#0" expanded="true" />
+                <element signature="e#794#795#0" expanded="true" />
+                <element signature="e#834#835#0" expanded="true" />
+                <element signature="e#878#879#0" expanded="true" />
+                <element signature="e#909#910#0" expanded="true" />
+                <element signature="e#936#937#0" expanded="true" />
+                <element signature="e#974#975#0" expanded="true" />
+                <element signature="e#1016#1017#0" expanded="true" />
+                <element signature="e#1047#1048#0" expanded="true" />
+                <element signature="e#1074#1075#0" expanded="true" />
+                <element signature="e#1114#1115#0" expanded="true" />
+                <element signature="e#1146#1147#0" expanded="true" />
+                <element signature="e#1181#1182#0" expanded="true" />
+                <element signature="e#1212#1213#0" expanded="true" />
+                <element signature="e#1260#1261#0" expanded="true" />
+                <element signature="e#1300#1301#0" expanded="true" />
+                <element signature="e#1346#1347#0" expanded="true" />
+                <element signature="e#1396#1397#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -117,26 +181,41 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/net/lynx/client/objects/Node.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+            <state relative-caret-position="551">
+              <caret line="150" column="17" selection-start-line="150" selection-start-column="17" selection-end-line="150" selection-end-column="17" />
+              <folding>
+                <element signature="e#492#493#0" expanded="true" />
+                <element signature="e#536#537#0" expanded="true" />
+                <element signature="e#3782#3783#0" expanded="true" />
+                <element signature="e#3818#3819#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/net/lynx/client/exception/KikErrorException.java">
+        <entry file="file://$PROJECT_DIR$/src/net/lynx/client/KikDataHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+            <state>
+              <caret column="24" lean-forward="true" selection-start-column="24" selection-end-column="24" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/net/lynx/client/LynxClient.java">
+        <entry file="file://$PROJECT_DIR$/src/net/lynx/client/objects/KikUUIDGen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="41" selection-start-line="12" selection-start-column="41" selection-end-line="12" selection-end-column="41" />
+            <state relative-caret-position="221">
+              <caret line="13" column="51" lean-forward="true" selection-start-line="13" selection-start-column="51" selection-end-line="13" selection-end-column="51" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/lynx/client/utils/MapUtils.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="24" column="25" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -158,10 +237,28 @@
       <find>\</find>
       <find>iq</find>
       <find>0123456789abcdef</find>
+      <find>Add</find>
+      <find>x</find>
+      <find>Byte[]</find>
+      <find>(?sm)(^(?:\s*)?((?:/\*(?:\*)?).*?(?&lt;=\*/))|(?://).*?(?&lt;=$))</find>
+      <find>MIIBVgIBADANBgkqhkiG9w0BAQEFAASCAUAwggE8AgEAAkEA0RZQQg2pXUo0btiJ</find>
+      <find>(String</find>
+      <find>MessageDigest</find>
+      <find>update</find>
+      <find>connect</find>
+      <find>toString</find>
+      <find>hASHmAP</find>
+      <find>ts</find>
+      <find>read_fr</find>
     </findStrings>
     <replaceStrings>
       <replace>+</replace>
       <replace>query</replace>
+      <replace>out</replace>
+      <replace>put</replace>
+      <replace>\n</replace>
+      <replace>KikTimestampUtils</replace>
+      <replace>getText</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -186,11 +283,20 @@
         <option value="$PROJECT_DIR$/src/main_LYNX.java" />
         <option value="$PROJECT_DIR$/src/client/KikClient.java" />
         <option value="$PROJECT_DIR$/src/LynxClient.java" />
-        <option value="$PROJECT_DIR$/src/net/lynx/client/Constants.java" />
-        <option value="$PROJECT_DIR$/src/net/lynx/client/utils/CryptoUtils.java" />
         <option value="$PROJECT_DIR$/src/net/lynx/client/KikListeners.java" />
         <option value="$PROJECT_DIR$/src/net/lynx/client/OnDataReceivedListener.java" />
         <option value="$PROJECT_DIR$/src/net/lynx/client/KikDataHandler.java" />
+        <option value="$PROJECT_DIR$/src/net/lynx/client/objects/KikUUIDGen.java" />
+        <option value="$PROJECT_DIR$/src/net/lynx/client/utils/KikTimestampUtils.java" />
+        <option value="$PROJECT_DIR$/src/net/lynx/client/utils/Base64.java" />
+        <option value="$PROJECT_DIR$/src/net/lynx/client/StrongHashMap.java" />
+        <option value="$PROJECT_DIR$/src/net/lynx/client/datatypes/SortedMap.java" />
+        <option value="$PROJECT_DIR$/src/net/lynx/client/datatypes/StrongHashMap.java" />
+        <option value="$PROJECT_DIR$/src/net/lynx/client/utils/MapUtils.java" />
+        <option value="$PROJECT_DIR$/src/net/lynx/client/Constants.java" />
+        <option value="$PROJECT_DIR$/src/net/lynx/client/utils/CryptoUtils.java" />
+        <option value="$PROJECT_DIR$/src/net/lynx/client/objects/User.java" />
+        <option value="$PROJECT_DIR$/src/net/lynx/client/objects/XMPPHolder.java" />
         <option value="$PROJECT_DIR$/src/net/lynx/client/LynxClient.java" />
         <option value="$PROJECT_DIR$/src/net/lynx/client/KikClient.java" />
       </list>
@@ -203,8 +309,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="456" />
-    <option name="y" value="148" />
+    <option name="x" value="281" />
+    <option name="y" value="-16" />
     <option name="width" value="1043" />
     <option name="height" value="574" />
   </component>
@@ -214,6 +320,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -232,11 +339,17 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="client" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="LynxKikApi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LynxKikApi" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="exception" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
       <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
@@ -244,8 +357,8 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539861960387" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../bcprov-jdk15on-160.jar!/" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539941420529" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../kxml2-2.3.0.jar!/" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -312,18 +425,27 @@
       <workItem from="1539790946297" duration="29000" />
       <workItem from="1539837107529" duration="1624000" />
       <workItem from="1539850541644" duration="156000" />
-      <workItem from="1539859656720" duration="2203000" />
+      <workItem from="1539859656720" duration="13594000" />
+      <workItem from="1539932322593" duration="8832000" />
     </task>
+    <task id="LOCAL-00001" summary="Stuff">
+      <created>1539862068158</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1539862068158</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39620000" />
+    <option name="totallyTimeSpent" value="59843000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49836066" visible="true" weight="0.2987897" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49836066" visible="true" weight="0.24508321" />
       <window_info id="Structure" order="1" sideWeight="0.50163937" side_tool="true" weight="0.26096824" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -332,7 +454,7 @@
       <window_info id="Favorites" order="6" sideWeight="0.50163937" side_tool="true" weight="0.24962178" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3295082" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49924356" weight="0.3295082" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49924356" visible="true" weight="0.3295082" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -358,6 +480,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Stuff" />
+    <option name="LAST_COMMIT_MESSAGE" value="Stuff" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/n.java" />
@@ -404,13 +530,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/lynx/client/objects/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/../bcprov-jdk15on-160.jar!/org/bouncycastle/pqc/math/linearalgebra/ByteUtils.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-680">
@@ -420,13 +539,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/LynxKikApi.iml">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/lynx/client/Constants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="10" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="10" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/net/lynx/client/exception/KikEmptyResponseException.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -443,20 +555,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/lynx/client/objects/Node.java">
+    <entry file="file://$PROJECT_DIR$/src/net/lynx/client/OnDataReceivedListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        <state relative-caret-position="85">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/lynx/client/utils/CryptoUtils.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/lang/String.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="20" column="72" selection-start-line="20" selection-start-column="72" selection-end-line="20" selection-end-column="72" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="120">
+          <caret line="378" column="24" selection-start-line="378" selection-start-column="24" selection-end-line="378" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/io/FilterInputStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="101" column="47" lean-forward="true" selection-start-line="101" selection-start-column="47" selection-end-line="101" selection-end-column="47" />
         </state>
       </provider>
     </entry>
@@ -467,24 +583,187 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/lynx/client/OnDataReceivedListener.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/util/LinkedHashMap.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        <state>
+          <caret line="644" column="42" lean-forward="true" selection-start-line="644" selection-start-column="42" selection-end-line="644" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/security/MessageDigest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2159">
+          <caret line="162" column="60" selection-start-line="162" selection-start-column="51" selection-end-line="162" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/lynx/client/utils/Base64.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="1509" column="31" selection-start-line="1509" selection-start-column="25" selection-end-line="1509" selection-end-column="31" />
+          <folding>
+            <element signature="e#37856#37857#0" expanded="true" />
+            <element signature="e#37898#37899#0" expanded="true" />
+            <element signature="e#41710#41711#0" expanded="true" />
+            <element signature="e#41751#41752#0" expanded="true" />
+            <element signature="e#44644#44645#0" expanded="true" />
+            <element signature="e#44696#44697#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/lynx/client/datatypes/StrongHashMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="41" selection-start-line="41" selection-end-line="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1018#1019#0" expanded="true" />
+            <element signature="e#1044#1045#0" expanded="true" />
+            <element signature="e#2713#2714#0" expanded="true" />
+            <element signature="e#2772#2773#0" expanded="true" />
+            <element signature="e#1647#1648#0" expanded="true" />
+            <element signature="e#1685#1686#0" expanded="true" />
+            <element signature="e#1722#1723#0" expanded="true" />
+            <element signature="e#1762#1763#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/lynx/client/datatypes/SortedMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1063#1079#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/lynx/client/utils/KikTimestampUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#182#183#0" expanded="true" />
+            <element signature="e#227#228#0" expanded="true" />
+            <element signature="e#937#938#0" expanded="true" />
+            <element signature="e#965#966#0" expanded="true" />
+            <element signature="e#995#996#0" expanded="true" />
+            <element signature="e#1044#1045#0" expanded="true" />
+            <element signature="e#1824#1825#0" expanded="true" />
+            <element signature="e#1884#1885#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/net/lynx/client/KikDataHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        <state>
+          <caret column="24" lean-forward="true" selection-start-column="24" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/lynx/client/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="76" selection-start-line="9" selection-start-column="76" selection-end-line="9" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/lynx/client/utils/MapUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="24" column="25" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/lynx/client/objects/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="50" column="20" lean-forward="true" selection-start-line="50" selection-start-column="20" selection-end-line="50" selection-end-column="20" />
+          <folding>
+            <element signature="e#317#318#0" expanded="true" />
+            <element signature="e#362#363#0" expanded="true" />
+            <element signature="e#548#549#0" expanded="true" />
+            <element signature="e#590#591#0" expanded="true" />
+            <element signature="e#622#623#0" expanded="true" />
+            <element signature="e#650#651#0" expanded="true" />
+            <element signature="e#690#691#0" expanded="true" />
+            <element signature="e#734#735#0" expanded="true" />
+            <element signature="e#766#767#0" expanded="true" />
+            <element signature="e#794#795#0" expanded="true" />
+            <element signature="e#834#835#0" expanded="true" />
+            <element signature="e#878#879#0" expanded="true" />
+            <element signature="e#909#910#0" expanded="true" />
+            <element signature="e#936#937#0" expanded="true" />
+            <element signature="e#974#975#0" expanded="true" />
+            <element signature="e#1016#1017#0" expanded="true" />
+            <element signature="e#1047#1048#0" expanded="true" />
+            <element signature="e#1074#1075#0" expanded="true" />
+            <element signature="e#1114#1115#0" expanded="true" />
+            <element signature="e#1146#1147#0" expanded="true" />
+            <element signature="e#1181#1182#0" expanded="true" />
+            <element signature="e#1212#1213#0" expanded="true" />
+            <element signature="e#1260#1261#0" expanded="true" />
+            <element signature="e#1300#1301#0" expanded="true" />
+            <element signature="e#1346#1347#0" expanded="true" />
+            <element signature="e#1396#1397#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/lynx/client/objects/Node.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="551">
+          <caret line="150" column="17" selection-start-line="150" selection-start-column="17" selection-end-line="150" selection-end-column="17" />
+          <folding>
+            <element signature="e#492#493#0" expanded="true" />
+            <element signature="e#536#537#0" expanded="true" />
+            <element signature="e#3782#3783#0" expanded="true" />
+            <element signature="e#3818#3819#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/lynx/client/objects/KikUUIDGen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="51" lean-forward="true" selection-start-line="13" selection-start-column="51" selection-end-line="13" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/lynx/client/objects/XMPPHolder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="26" column="57" selection-start-line="26" selection-start-column="57" selection-end-line="26" selection-end-column="57" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/lynx/client/utils/CryptoUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="613">
+          <caret line="78" column="11" selection-start-line="78" selection-start-column="11" selection-end-line="78" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4602#4603#0" expanded="true" />
+            <element signature="e#4630#4631#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/net/lynx/client/LynxClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="41" selection-start-line="12" selection-start-column="41" selection-end-line="12" selection-end-column="41" />
+        <state relative-caret-position="89">
+          <caret line="9" column="14" lean-forward="true" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="15" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -493,14 +772,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/net/lynx/client/KikClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="160" column="9" lean-forward="true" selection-start-line="160" selection-start-column="9" selection-end-line="160" selection-end-column="9" />
+        <state relative-caret-position="126">
+          <caret line="190" column="17" selection-start-line="190" selection-start-column="17" selection-end-line="190" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#7212#7213#0" expanded="true" />
-            <element signature="e#7249#7250#0" expanded="true" />
-            <element signature="e#7335#7336#0" expanded="true" />
-            <element signature="e#7387#7388#0" expanded="true" />
+            <element signature="e#8074#8075#0" expanded="true" />
+            <element signature="e#8126#8127#0" expanded="true" />
           </folding>
         </state>
       </provider>
