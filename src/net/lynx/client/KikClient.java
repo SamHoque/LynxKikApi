@@ -1,12 +1,8 @@
 package net.lynx.client;
 
 import net.lynx.client.exception.KikErrorException;
-import net.lynx.client.objects.KikUUIDGen;
-import net.lynx.client.objects.Node;
-import net.lynx.client.objects.User;
-import net.lynx.client.objects.XMPPHolder;
+import net.lynx.client.objects.*;
 import net.lynx.client.utils.CryptoUtils;
-import net.lynx.client.utils.KikTimestampUtils;
 import net.lynx.client.utils.MapUtils;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -17,7 +13,6 @@ import javax.net.ssl.SSLSocketFactory;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.LinkedHashMap;
-import java.util.Map;
 import java.util.UUID;
 
 import static net.lynx.client.Constants.kikHost;
@@ -25,10 +20,8 @@ import static net.lynx.client.Constants.kikPort;
 
 public class KikClient {
     private OnDataReceivedListener onDataReceived;
-    private SSLSocketFactory sslsocketfactory;
     private SSLSocket sslsocket;
-    private BufferedWriter writer;
-    private InputStream is;
+    private BufferedWriter bufferedWriter;
     private BufferedInputStream bufferedInputStream;
 
     public KikClient() throws IOException {
@@ -37,54 +30,62 @@ public class KikClient {
         connect_to_kik_server();
     }
 
-    private static void Log(Object object) {
-        System.out.println(object);
-    }
 
     private void connect_to_kik_server() {
+        Logger.PLUS.log("Trying to connect to kik servers");
         String initial_connection_payload = "<k anon=\"\">";
-        Log("Connecting to kik server...");
         try {
             write_to_kik_server(initial_connection_payload);
             String response = read_from_kik_server_once();
             if (!response.equals("<k ok=\"1\">")) {
                 throw new KikErrorException("Could not connect to kik server: " + response);
             }
-            Log("Connected to kik server");
-        } catch (IOException e) {
-            Log("Failed connecting to kik server...");
-            e.printStackTrace();
-        } catch (KikErrorException e) {
-            e.printStackTrace();
+            Logger.NULL.log("Connection to kik servers successful");
+        } catch (IOException | KikErrorException e) {
+            Logger.NEGATIVE.log("Connection to kik servers failed");
+            Logger.NEGATIVE.log("Error: %s", e.toString());
         }
     }
 
-    public void login_to_kik_server(String username, String password) throws IOException {
+    public void login_to_kik_server(String username, String password) throws IOException, XmlPullParserException {
+        Logger.PLUS.log("Trying to login with username '%s'", username);
         write_to_kik_server(XMPPHolder.login_xmpp(username, password));
         String ackRequest = read_from_kik_server_once();
+        Logger.NULL.log("Received ack response from kik with id '%s'", getNode(ackRequest).getAttribute("id"));
         String loginResponse = read_from_kik_server_once();
-        try {
-            XmlPullParser parser = XmlPullParserFactory.newInstance().newPullParser();
-            parser.setInput(new StringReader(loginResponse));
-            Node iq = new Node(null, parser);
-            Node query = iq.getFirstChildByName("query");
-            Node node = query.getFirstChildByName("node");
-            Node email = query.getFirstChildByName("email");
-            Node usernameNode = query.getFirstChildByName("username");
-            Node first = query.getFirstChildByName("first");
-            Node last = query.getFirstChildByName("last");
-            Node xdata = query.getFirstChildByName("xdata");
-            Node[] records = query.getChildrensByName("record");
-            User user = new User();
-            user.setNode(node);
-            user.setEmail(email);
-            user.setUsername(usernameNode);
-            user.setFirst(first);
-            user.setLast(last);
-            establishSession(user, password);
-        } catch (XmlPullParserException e) {
-            e.printStackTrace();
+        Node iq = getNode(loginResponse);
+        String attribute = iq.getAttribute("type");
+        if (attribute.equals("error")) {
+            Node error = iq.getFirstChildByName("error");
+            if (error.containsChild("not-registered")) {
+                Logger.NEGATIVE.log("Could not login to kik because user is not registered");
+            } else if (error.containsChild("password-mismatch")) {
+                Logger.NEGATIVE.log("Could not login to kik because password is wrong");
+            } else if (error.containsChild("device-change-timeout")) {
+                Logger.NEGATIVE.log("Could not login to kik because device has changed");
+            } else if (error.containsChild("captcha-url")) {
+                Logger.NEGATIVE.log("Could not login to kik because of captcha");
+            } else {
+                Logger.NEGATIVE.log("Could not login to kik because of an unknown error");
+            }
+            return;
         }
+        Node query = iq.getFirstChildByName("query");
+        Node node = query.getFirstChildByName("node");
+        Node email = query.getFirstChildByName("email");
+        Node usernameNode = query.getFirstChildByName("username");
+        Node first = query.getFirstChildByName("first");
+        Node last = query.getFirstChildByName("last");
+        Node xdata = query.getFirstChildByName("xdata");
+        Node[] records = query.getChildrensByName("record");
+        User user = new User();
+        user.setNode(node);
+        user.setEmail(email);
+        user.setUsername(usernameNode);
+        user.setFirst(first);
+        user.setLast(last);
+        Logger.PLUS.log("Login to kik successful, Trying to establish a session now");
+        establishSession(user, password);
     }
 
     public void establishSession(User user, String password) throws IOException {
@@ -183,17 +184,17 @@ public class KikClient {
     }
 
     private void setupNewConnection() throws IOException {
-        sslsocketfactory = (SSLSocketFactory) SSLSocketFactory.getDefault();
-        sslsocket = (SSLSocket) sslsocketfactory.createSocket(kikHost, kikPort);
-        writer = new BufferedWriter(new OutputStreamWriter(sslsocket.getOutputStream()));
-        is = sslsocket.getInputStream();
-        bufferedInputStream = new BufferedInputStream(is);
+        sslsocket = (SSLSocket) SSLSocketFactory.getDefault().createSocket(kikHost, kikPort);
+        bufferedWriter = new BufferedWriter(new OutputStreamWriter(sslsocket.getOutputStream()));
+        bufferedInputStream = new BufferedInputStream(sslsocket.getInputStream());
         sslsocket.startHandshake();
     }
 
     private void resetConnection() throws IOException {
         write_to_kik_server("</k>");
-        writer.close();
+        bufferedWriter.close();
+        sslsocket.close();
+        bufferedInputStream.close();
         setupNewConnection();
     }
 
@@ -202,8 +203,8 @@ public class KikClient {
     }
 
     private void write_to_kik_server(String data) throws IOException {
-        writer.write(data);
-        writer.flush();
+        bufferedWriter.write(data);
+        bufferedWriter.flush();
     }
 
     private String read_from_kik_server_once() throws IOException {
@@ -222,6 +223,12 @@ public class KikClient {
      */
     public void setOnDataReceived(OnDataReceivedListener onDataReceived) {
         this.onDataReceived = onDataReceived;
+    }
+
+    public Node getNode(String string) throws XmlPullParserException, IOException {
+        XmlPullParser parser = XmlPullParserFactory.newInstance().newPullParser();
+        parser.setInput(new StringReader(string));
+        return new Node(null, parser);
     }
 }
 

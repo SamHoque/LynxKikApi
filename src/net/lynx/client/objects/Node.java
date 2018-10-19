@@ -252,5 +252,9 @@ public class Node {
         }
         return null;
     }
+
+    public boolean containsChild(String name){
+        return getFirstChildByName(name) != null;
+    }
 }
 

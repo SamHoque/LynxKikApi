@@ -1,6 +1,6 @@
 package net.lynx.client;
 
-import net.lynx.client.exception.KikEmptyResponseException;
+import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
 
@@ -9,10 +9,8 @@ public class LynxClient {
         try {
             KikClient kikClient = new KikClient();
             kikClient.login_to_kik_server("TestUsername97", "TestPass");
-            kikClient.setOnDataReceived(data -> {
-                System.out.println(data);
-            });
-        } catch (IOException e) {
+            kikClient.setOnDataReceived(System.out::println);
+        } catch (IOException | XmlPullParserException e) {
             e.printStackTrace();
         }
     }
