@@ -1,7 +1,6 @@
 package net.lynx.client.utils;
 
 import net.lynx.client.Constants;
-import net.lynx.client.objects.User;
 
 import javax.crypto.Mac;
 import javax.crypto.SecretKeyFactory;
@@ -14,7 +13,6 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class CryptoUtils {
 
@@ -88,7 +86,7 @@ public class CryptoUtils {
             algos[2] = MessageDigest.getInstance("MD5");
             algos[i].update(b);
         } catch (Exception e){
-
+            e.printStackTrace();
         }
         return algos[i].digest();
     }
@@ -96,19 +94,16 @@ public class CryptoUtils {
     private static int CompressKikMapHash(byte[] digest) {
         long j = 0;
         for (int i = 0; i < digest.length; i += 4) {
-            long b4 = ByteToSignedInt(digest[i + 3]) << 24;
-            long b3 = ByteToSignedInt(digest[i + 2]) << 16;
-            long b2 = ByteToSignedInt(digest[i + 1]) << 8;
-            long b1 = ByteToSignedInt(digest[i]);
+            long b4 = digest[i + 3] << 24;
+            long b3 = digest[i + 2] << 16;
+            long b2 = digest[i + 1] << 8;
+            long b1 = digest[i];
             long modifier = b4 | b3 | b2 | b1;
             j ^= modifier;
         }
         return (int) j;
     }
 
-    private static int ByteToSignedInt(byte value) {
-        return value;
-    }
 
     private static String getSha1(byte[] bytes) throws NoSuchAlgorithmException {
         return getHexStringFromBytes(MessageDigest.getInstance("SHA-1").digest(bytes));

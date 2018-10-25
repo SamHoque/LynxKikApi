@@ -21,7 +21,7 @@ public class XMPPHolder {
         query.addTextNode("logins-since-install", "1");
         query.addTextNode("version", "14.8.0.14887");
         query.addTextNode("lang", "en_US");
-        query.addTextNode("android-sdk", "28");
+        query.addTextNode("android-sdk", "19");
         query.addTextNode("registrations-since-install", "0");
         query.addTextNode("prefix", "CAN");
         query.addTextNode("android-id", "849d4ffb0c020de7");

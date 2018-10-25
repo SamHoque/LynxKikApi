@@ -30,13 +30,13 @@ public class KikClient {
         connect_to_kik_server();
     }
 
-
     private void connect_to_kik_server() {
         Logger.PLUS.log("Trying to connect to kik servers");
         String initial_connection_payload = "<k anon=\"\">";
         try {
             write_to_kik_server(initial_connection_payload);
             String response = read_from_kik_server_once();
+            Logger.PLUS.log("payload: " + response);
             if (!response.equals("<k ok=\"1\">")) {
                 throw new KikErrorException("Could not connect to kik server: " + response);
             }
@@ -92,7 +92,10 @@ public class KikClient {
         resetConnection();
         String jid = user.getJid();
         String jidWithDeviceID = jid + "/CAN" + Constants.device_id;
-        String sid = KikUUIDGen.getKikUUID();
+        //String sid = KikUUIDGen.getKikUUID();
+
+        //Hard coded SID
+        String sid = "e7f76e44-42a6-4008-82ce-3320d5138842";
         String timestamp = "1496333389122";
         String signature = MapUtils.generateRsaSign(sid, timestamp, Constants.KIK_VERSION, jid);
         LinkedHashMap<String, String> map = new LinkedHashMap<>();
@@ -109,53 +112,32 @@ public class KikClient {
         map.put("ts", timestamp);
         String connectionPaylaod = MapUtils.makeConnectionPayload(map);
         System.out.println(connectionPaylaod);
-        write_to_kik_server(connectionPaylaod);
+
+        // write_to_kik_server(connectionPaylaod);
+
+        /**
+         * Hardcoded packet output from python lib
+         * works fine on python lib every time!
+         */
+
+        write_to_kik_server("<k n=\"1\" ts=\"1496333389122\" conn=\"WIFI\" signed=\"PmH7FymKsQdUUHttmKDOwdr77a7oaiNQ0LbnHJM9WMO0f4scXsVfC3V-zlMvp5bP4PsV0lg8lQCg408sf-kM3g\" to=\"talk.kik.com\" from=\"testusername97_4p4@talk.kik.com/CAN62030843678b7376a707ca3d11e87837\" sid=\"e7f76e44-42a6-4008-82ce-3320d5138842\" v=\"14.5.0.13136\" cv=\"f885e7de4937a9c530227d9a88515de1f37cce78\" lang=\"en_US\" p=\"b5d76ee10188c50b6dac0740108acb77\">");
         String k = read_from_kik_server_once();
         System.out.println(k);
-    }
-
-    private void register_to_kik(String username, String password, String email) throws IOException {
-        String usernamePassKey = CryptoUtils.hashPassword(username, password);
-        String emailPassKey = CryptoUtils.hashPassword(email, password);
-        Node iq = new Node("iq");
-        iq.addAttribute("type", "set");
-        iq.addAttribute("id", UUID.randomUUID().toString());
-        Node query = new Node("query");
-        query.setNamespace("jabber:iq:register");
-        query.addTextNode("email", email);
-        query.addTextNode("passkey-e", emailPassKey);
-        query.addTextNode("passkey-u", usernamePassKey);
-        query.addTextNode("device-id", Constants.device_id);
-        query.addTextNode("username", username);
-        query.addTextNode("first", "Made");
-        query.addTextNode("last", "By Rab");
-        query.addTextNode("birthday", "1984-7-25");
-        query.addTextNode("version", Constants.KIK_VERSION);
-        query.addTextNode("install-date", String.valueOf(System.currentTimeMillis() - 69000));
-        query.addTextNode("device-type", "android");
-        query.addTextNode("brand", "HTC");
-        query.addTextNode("logins-since-install", "0");
-        query.addTextNode("lang", "en_US");
-        query.addTextNode("android-sdk", "17");
-        query.addTextNode("registrations-since-install", "0");
-        query.addTextNode("prefix", "CAN");
-        query.addTextNode("android-id", Constants.android_id);
-        query.addTextNode("model", "EndeavorU");
-        iq.addChild(query);
-        write_to_kik_server(iq.toString());
     }
 
     public void start() {
         new Thread(() -> {
             byte[] buffer = new byte[32768];
             try {
-                for (int b; ((b = bufferedInputStream.read(buffer)) > 0); ) {
-                    onDataReceived.onDataReceived(new String(buffer, 0, b, StandardCharsets.UTF_8));
+                String data;
+                for (int b; ((b = bufferedInputStream.read(buffer)) > 0);) {
+                    data = new String(buffer, 0, b, StandardCharsets.UTF_8);
+                    onDataReceived.onDataReceived(data);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        });
+        }).start();
     }
 
 
@@ -165,7 +147,8 @@ public class KikClient {
                 .addAttribute("to", jid)
                 .addAttribute("id", UUID.randomUUID().toString())
                 .addAttribute("cts", String.valueOf(System.currentTimeMillis()))
-                .addTextNode("body", body).addTextNode("preview", body);
+                .addTextNode("body", body)
+                .addTextNode("preview", body);
 
         Node kik = new Node("kik")
                 .addAttribute("push", "true")
@@ -188,6 +171,7 @@ public class KikClient {
         bufferedWriter = new BufferedWriter(new OutputStreamWriter(sslsocket.getOutputStream()));
         bufferedInputStream = new BufferedInputStream(sslsocket.getInputStream());
         sslsocket.startHandshake();
+        sslsocket.setKeepAlive(true);
     }
 
     private void resetConnection() throws IOException {
