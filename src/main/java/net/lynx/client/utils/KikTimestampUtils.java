@@ -1,59 +1,16 @@
 package net.lynx.client.utils;
 
-import java.util.Random;
-import java.util.concurrent.TimeUnit;
-
 /**
  * Source: kik.core.util.x;
  */
 
 public class KikTimestampUtils {
-    private static volatile long a = 0;
-    private static volatile long b = -1;
-
-    public static double e(long j) {
-        return ((double) j) / 1000.0d;
-    }
-
-    private static synchronized void f(long j) {
-        synchronized (KikTimestampUtils.class) {
-            a = j;
-            b = System.currentTimeMillis();
-        }
-    }
-
-    public static synchronized void a(long j) {
-        synchronized (KikTimestampUtils.class) {
-            f(j - System.currentTimeMillis());
-        }
-    }
-
-    public static synchronized long a() {
-        long j;
-        synchronized (KikTimestampUtils.class) {
-            j = a;
-        }
-        return j;
-    }
-
-    public static synchronized long b() {
+    public static synchronized long getCurrentTimestamp() {
         long currentTimeMillis;
         synchronized (KikTimestampUtils.class) {
-            currentTimeMillis = System.currentTimeMillis() + a;
+            currentTimeMillis = System.currentTimeMillis();
         }
         return currentTimeMillis;
-    }
-
-    public static long b(long j) {
-        return j - a;
-    }
-
-    public static long c() {
-        return System.currentTimeMillis();
-    }
-
-    public static long a(Random random, long j) {
-        return (long) (((random.nextDouble() * 0.25d) + 1.0d) * ((double) j));
     }
 
     public static synchronized long c(long j) {
@@ -69,18 +26,6 @@ public class KikTimestampUtils {
             j = (j4 | (j3 << 5)) | j2;
         }
         return j;
-    }
-
-    public static synchronized long d() {
-        long j;
-        synchronized (KikTimestampUtils.class) {
-            j = b;
-        }
-        return j;
-    }
-
-    public static long d(long j) {
-        return TimeUnit.MILLISECONDS.toDays(b() - j);
     }
 }
 

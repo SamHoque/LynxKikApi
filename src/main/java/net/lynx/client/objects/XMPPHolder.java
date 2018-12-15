@@ -5,6 +5,9 @@ import net.lynx.client.utils.CryptoUtils;
 
 import java.util.UUID;
 
+import static net.lynx.client.Constants.KIK_VERSION;
+import static net.lynx.client.Constants.android_id;
+
 public class XMPPHolder {
     public static Node login_xmpp(String username, String password){
         Node iq = new Node("iq");
@@ -15,16 +18,18 @@ public class XMPPHolder {
         query.addTextNode("username", username);
         query.addTextNode("passkey-u", CryptoUtils.hashPassword(username, password));
         query.addTextNode("device-id", Constants.device_id);
-        query.addTextNode("install-date", String.valueOf(System.currentTimeMillis() - 69000));
+        query.addTextNode("install-referrer", "utm_source=google-play&amp;utm_medium=organic");
+        query.addTextNode("operator", "310260");
+        query.addTextNode("install-date", "1494078709023");
         query.addTextNode("device-type", "android");
         query.addTextNode("brand", "generic");
         query.addTextNode("logins-since-install", "1");
-        query.addTextNode("version", "14.8.0.14887");
+        query.addTextNode("version", KIK_VERSION);
         query.addTextNode("lang", "en_US");
         query.addTextNode("android-sdk", "19");
         query.addTextNode("registrations-since-install", "0");
         query.addTextNode("prefix", "CAN");
-        query.addTextNode("android-id", "849d4ffb0c020de7");
+        query.addTextNode("android-id", android_id);
         query.addTextNode("model", "Samsung Galaxy S5 - 4.4.4 - API 19 - 1080x1920");
         iq.addChild(query);
         return iq;
