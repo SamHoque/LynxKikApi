@@ -1,7 +1,7 @@
 package org.kik.bot;
 
-import net.lynx.client.KikClient;
 import org.apache.log4j.Logger;
+import org.kik.bot.example.ListenerBot;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,9 +16,8 @@ public class Client implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         try {
-            KikClient kikClient = new KikClient();
-            kikClient.login_to_kik_server(args[0], args[1]);
-            kikClient.start();
+            ListenerBot listenerBot = new ListenerBot(args[0], args[1]);
+            listenerBot.start();
         } catch (Exception e) {
             logger.error("Failed to start KikClient", e);
         }
