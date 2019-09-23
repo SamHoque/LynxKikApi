@@ -9,5 +9,5 @@ This is a commandline Java App that will run a kik bot using the LynxKikApi.
  - Maven
  
 ## Instructions to run
- - Build using 'mvn clean package'
- - Run using 'java -jar target/gameBot-1.0-SNAPSHOT.jar username password'
+ - Build using `mvn clean package`
+ - Run using `java -jar target/gameBot-1.0-SNAPSHOT.jar username password`
